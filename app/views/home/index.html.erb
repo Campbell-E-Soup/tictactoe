@@ -1,2 +1,25 @@
-This is the home page
-He will play tictactoe here!!
+<!-- The stuff to display who won last -->
+<% if @game.won == -1 %>
+    <h2 class="text-center message rounded m-5 mb-2 mt-0 p-2">It's a tie!</h2>
+<% elsif @game.won != 0 %>
+    <h2 class="text-center message rounded m-5 mb-2 mt-0 p-2"><i class="<%= GameState::ICONS[@game.won] %>"></i> Won!</h2>
+<% end %>
+<div class="board container d-flex" align="center">
+    <% @game.grid.each_with_index do |row, y| %>
+        <div class="row buffer" align="center">
+            <% row.each_with_index do |cell, x| %>
+                <div class="col-12 space">
+                    <% if cell > 0 %> 
+                        <button class="btn btn-outline-<%= GameState::COLORS[cell] %> tictactoe" disabled>
+                            <i class="<%= GameState::ICONS[cell] %>"></i>
+                        </button>
+                    <% else %>
+                        <%= link_to place_home_path(x: x, y: y), class: "btn btn-outline-#{GameState::COLORS[cell]} tictactoe" do %>
+                            <i class="<%= GameState::ICONS[cell] %>"></i>
+                        <% end %>
+                    <% end %>
+                </div>
+            <% end %>
+        </div>
+    <% end %>
+</div>
