@@ -1,5 +1,4 @@
 require "test_helper"
-require "minitest/mock"
 
 class HomeControllerTest < ActionController::TestCase
   test "should get index" do
