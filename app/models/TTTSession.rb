@@ -1,5 +1,5 @@
 class TTTSession
-    GAMEKEY = 'game_state'
+    GAMEKEY = "game_state"
 
     def initialize(session)
         @session = session
